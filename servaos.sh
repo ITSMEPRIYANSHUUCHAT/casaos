@@ -569,7 +569,7 @@ DownloadAndInstallCasaOS() {
         for PACKAGE in "${CASA_PACKAGES[@]}"; do
             Show 2 "Downloading ${PACKAGE}..."
             GreyStart
-            ${sudo_cmd} wget -t 3 -q --show-progress -c  "${PACKAGE}" || Show 1 "Failed to download package"
+            ${sudo_cmd} curl -L "${PACKAGE}" -o "$(basename ${PACKAGE})" || Show 1 "Failed to download package"
             ColorReset
         done
 
